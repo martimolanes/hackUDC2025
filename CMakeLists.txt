@@ -5,6 +5,8 @@ project(anov)
 
 target_sources(app PRIVATE
     src/main.c
+    src/ble.c
+    src/hw.c
 )
 
 
