@@ -1,0 +1,45 @@
+{
+  "version": {
+    "major": 3,
+    "minor": 999
+  },
+  "user-configs": {
+    "protocols": {
+      "tcode-v03": {
+        "communication": [
+          {
+            "btle": {
+              "names": [
+                "V"
+              ],
+              "services": {
+                "771a69d3-c9fc-4674-9bce-ca5c48f5ba55": {
+                  "tx": "73d978f7-7dda-4ef2-8cb8-c5e7ae10cc2a"
+                }
+              }
+            }
+          }
+        ],
+        "configurations": [
+          {
+            "identifier": ["V"],
+            "name": "Valonso",
+            "features": [
+              {
+                "feature-type": "Vibrate",
+                "actuator": {
+                  "step-range": [
+                    0,
+                    99
+                  ],
+                  "messages": [
+                    "ScalarCmd"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }}
+}
