@@ -61,23 +61,26 @@ void handle_device_cmd(const char *cmd)
     }
 }
 
+#define VIBRATION_CHANNEL '0'
+#define BASE_CMD_LEN 2
 void handle_vibration_cmd(const char *cmd, int len)
 {
-    //V + CHANNEL + digits + \n
-   if (strlen(cmd) < 3)
+
+    //V + CHANNEL + digits
+   if (strlen(cmd) <= BASE_CMD_LEN)
     {
         LOG_ERR("Invalid vibration command: %s", cmd);
         return;
     }
-    if (cmd[1] != '0')
+    if (cmd[1] != VIBRATION_CHANNEL)
     {
         LOG_ERR("Invalid vibration channel (we only have 0): %c", cmd[1]);
         return;
     }
 
     // Extract vibration intensity
-    const char *mag_str = cmd + 2;
-    size_t mag_len = len - 3;
+    const char *mag_str = cmd + BASE_CMD_LEN;
+    size_t mag_len = len - BASE_CMD_LEN;
     float magnitude = 0;
     int divisor = 1;
     //Magnitude is 0.DIGITS
@@ -94,7 +97,9 @@ void handle_vibration_cmd(const char *cmd, int len)
     magnitude /= divisor;
     //Magnitude is now a float between 0 and 1
     // Set PWM duty cycle based on magnitude
+
     uint32_t pulse = min_pulse + (max_pulse - min_pulse) * magnitude;
+
     LOG_INF("Pulse: %u", pulse);
     LOG_INF("Min pulse: %u,  Max pulse: %u", min_pulse, max_pulse);
     pwm_set_pulse_dt(&servo, pulse);
