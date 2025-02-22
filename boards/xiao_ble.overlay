@@ -4,7 +4,7 @@
     // range (700 µs to 2500 µs) that corresponds to the servo’s full range of motion.
     servo: servo {
         compatible = "pwm-servo";
-        pwms = <&pwm0 1 PWM_MSEC(20) PWM_POLARITY_NORMAL>;
+        pwms = <&pwm0 0 PWM_MSEC(20) PWM_POLARITY_INVERTED>;
         min-pulse = <PWM_USEC(700)>;
         max-pulse = <PWM_USEC(2500)>;
     };

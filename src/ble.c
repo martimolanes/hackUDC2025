@@ -8,6 +8,33 @@
 
 LOG_MODULE_REGISTER(ble, LOG_LEVEL_DBG);
 
+/* Callbacks de conexión Bluetooth */
+static void on_connected(struct bt_conn *conn, uint8_t err)
+{
+    if (err) {
+        LOG_ERR("Conexión fallida (error %d)", err);
+        return;
+    }
+
+    char addr[BT_ADDR_LE_STR_LEN];
+    bt_addr_le_to_str(bt_conn_get_dst(conn), addr, sizeof(addr));
+
+    LOG_INF("Dispositivo conectado: %s", addr);
+}
+
+static void on_disconnected(struct bt_conn *conn, uint8_t reason)
+{
+    char addr[BT_ADDR_LE_STR_LEN];
+    bt_addr_le_to_str(bt_conn_get_dst(conn), addr, sizeof(addr));
+
+    LOG_INF("Dispositivo desconectado: %s (razón: 0x%02x)", addr, reason);
+}
+
+static struct bt_conn_cb conn_callbacks = {
+    .connected = on_connected,    // Se ejecuta al conectar
+    .disconnected = on_disconnected,  // Opcional: para detectar desconexiones
+};
+
 /* Custom 128-bit UUIDs */
 #define VIBRATOR_SERVICE_UUID_VAL \
     BT_UUID_128_ENCODE(0x771a69d3, 0xc9fc, 0x4674, 0x9bce, 0xca5c48f5ba55)
@@ -68,6 +95,10 @@ static void bt_ready(int err)
 
 void vibrator_ble_init(void)
 {
+    // callback de conexión
+    bt_conn_cb_register(&conn_callbacks);
+
+    // Inicializar Bluetooth
     int err = bt_enable(bt_ready);
     if (err) {
         LOG_ERR("Bluetooth enable failed: %d", err);
