@@ -120,6 +120,11 @@ void vibrator_control(const char *cmd)
         return;
     }
 
+    //If ends in newline remove it
+    if (cmd[len - 1] == '\n')
+    {
+        len--;
+    }
     switch (cmd[0]) {
     case 'D':
         handle_device_cmd(cmd);
