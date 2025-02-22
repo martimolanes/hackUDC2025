@@ -31,7 +31,7 @@ build_zephyr() {
 }
 
 server() {
-    bluetoothctl disconnect E2:40:B8:D4:8D:1E
+    bluetoothctl disconnect E2:40:B8:D4:8D:1E || true
     bluetoothctl scan on
     local project_dir="intiface-engine"
     local engine="$project_dir/target/debug/intiface-engine"
