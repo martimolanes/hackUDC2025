@@ -26,14 +26,18 @@ build_zephyr() {
     cd ..
     west build -p always -b xiao_ble anov/AnOS
     cd -
+    echo "\n now mount the device, with gnome-files, and flash it with:"
+    echo "  \$ cd .. && west flash -r uf2"
 }
 
 server() {
+    bluetoothctl disconnect E2:40:B8:D4:8D:1E
+    bluetoothctl scan on
     local project_dir="intiface-engine"
     local engine="$project_dir/target/debug/intiface-engine"
     local websocket_port=12345
-    local device_config="$HOME/.local/share/com.nonpolynomial.intiface_central/config/buttplug-device-config-v3.json"
-    local user_device_config="$project_dir/test.json"
+    local device_config="$project_dir/config/buttplug-device-config-v3.json"
+    local user_device_config="$project_dir/config/test.json"
     local log_level="info"
 
     echo "Starting intiface-engine"
