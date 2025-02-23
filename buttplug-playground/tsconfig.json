@@ -1,0 +1,21 @@
+{
+  "compilerOptions" : {
+    "lib": ["es5", "ES2015", "ES2015.promise", "dom", "es6"],
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "sourceMap": true,
+    "allowSyntheticDefaultImports": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "strictNullChecks": true,
+    "noImplicitThis": true,
+    "outDir": "./dist/build",
+    "types": ["node", "vuetify"]
+  },
+  "include": [
+    "src/**/*.ts",
+    "tests/**/*.ts"
+  ]
+}

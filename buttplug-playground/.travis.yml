@@ -1,0 +1,18 @@
+language: node_js
+sudo: false
+node_js:
+  - 10
+install:
+  - yarn
+script:
+  - yarn tslint
+  - yarn build
+  - yarn deploy
+cache: yarn
+deploy:
+  - provider: pages
+    skip-cleanup: true
+    local-dir: deploy
+    github-token: $GITHUB_TOKEN
+    on:
+      branch: master
