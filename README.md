@@ -2,14 +2,56 @@
 
 # AnOV (An Open Vibrator)
 
-A **three-day** project to take a serious approach to a **privacy-first** buttplug full project using [Zephyr RTOS](https://github.com/zephyrproject-rtos/zephyr).
+A **three-day** DIY project to take a serious approach to a **privacy-first** buttplug full project using [Zephyr RTOS](https://github.com/zephyrproject-rtos/zephyr).
 
-If you care about your phone's privacy, you should care about your
-teledildonics privacy too.
+If you care about your phone's privacy, you should care about your intimate privacy too.
 
 <img alt="Anov" height="240" src="./assets/favicon.jpg" />
 
 </div>
+
+## CAPABILITIES
+- **Bluetooth Low Energy** (BLE) communication.
+- **Vibration** control.
+- **Privacy-first** design.
+- **Serotonin** boost.
+- **Open-source** hardware and software.
+- **Extensible** and **modular** design following open protocols.
+
+![AnOV](./assets/anov.jpg)
+
+## Structure of the project
+
+```bash
+.
+├── AnOV
+├── buttplug-playground
+├── intiface-engine
+├── models
+├── stocklove
+├── LICENSE
+└── x
+```
+
+- **AnOV**: The main project folder, this is the firmware for the Xiao Nrf52840.
+
+- **buttplug-playground**: A web-frontend that utilizes the OSS [buttplug protocol specification](https://buttplug-spec.docs.buttplug.io/docs/spec).
+
+- **intiface-engine**: The backend of the buttplug.io stack, it has a way of define the **Device protocol** that we use in our DIY vibrator
+
+- **models**: The .stl 3D models of the vibrator. 
+
+- **stocklove**: An alternative buttplug.io-client implementation that interfaces with stockfish to transmit via vibrations the best move in the board (Hans Niemman Technique).
+
+- **LICENSE**: The license of the project, we use the MIT license. This permisive license allows you to use the code in any way you want.
+
+- **x**: A bash script to help with the development of the monorepo.
+
+## How to build this amazing project
+
+### Hardware
+
+### Software
 
 
 
