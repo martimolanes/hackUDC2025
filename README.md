@@ -53,8 +53,17 @@ If you care about your phone's privacy, you should care about your intimate priv
 
 ![xiao-nrf52840](./assets/xiao.jpg)
 
+![simple-electronics](./assets/simple-electronics.png)
+
+> **Note**: This is a simplified version of the electronics of the project.
+
 ### Software
 
+The above section (Structure of the project) gives a brief overview of the project.
+In this section, we will focus on the arquiteture of the project.
 
+![arquiteture](./assets/AnOV-architecture.svg)
+
+> **Note**: BP == "ButtPlug" >:)
 
 Special thanks to [GPUL](https://gpul.org/) for the amazing event. 
