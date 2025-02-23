@@ -1,7 +1,7 @@
 / {
-    // this file informs Zephyr that a servo is connected to the board via PWM on
+    // this section informs Zephyr that a servo (our vibrator) is connected to the board via PWM on
     // pwm0 (channel 1) with a 20 ms period, and it specifies the pulse width
-    // range (700 µs to 2500 µs) that corresponds to the servo’s full range of motion.
+    // range (0 to 20ms) that corresponds to the full range of possible voltages for controlling its speed.
     servo: servo {
         compatible = "pwm-servo";
         pwms = <&pwm0 0 PWM_MSEC(20) PWM_POLARITY_NORMAL>;
@@ -11,6 +11,7 @@
 };
 
 
+// Define the PWM0 pins as 1.15 (Pin 10)
 &pinctrl {
     pwm0_default: pwm0_default {
         group1 {
@@ -27,6 +28,7 @@
 };
 
 
+// Activate the PWM0
 &pwm0 {
     status = "okay";
     pinctrl-0 = <&pwm0_default>;
