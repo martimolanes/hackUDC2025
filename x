@@ -14,8 +14,7 @@ function help() {
     echo "  run:"
     echo "    $0 build-zephyr     - build Zephyr src"
     echo "    $0 server           - start intiface-engine"
-    # echo "  stop:"
-    # echo "    $0 stop             - "
+    echo "    $0 web              - start playground web toy server"
 }
 
 
@@ -38,7 +37,7 @@ server() {
     local websocket_port=12345
     local device_config="$project_dir/config/buttplug-device-config-v3.json"
     local user_device_config="$project_dir/config/test.json"
-    local log_level="info"
+    local log_level="trace"
 
     echo "Starting intiface-engine"
 
@@ -52,7 +51,18 @@ server() {
               --use-bluetooth-le \
               --device-config-file "$device_config" \
               --user-device-config-file "$user_device_config" \
-              --log "$log_level"
+              --log "$log_level" \
+              --websocket-use-all-interfaces
+}
+
+web() {
+    echo "Starting buttplug-playground web toy server"
+    cd buttplug-playground
+    source /usr/share/nvm/init-nvm.sh
+    nvm use 16 || nvm install 16 && nvm use 16
+    yarn install
+    yarn start:remote --env development
+    cd -
 }
 
 if [[ $PWD != $(git rev-parse --show-toplevel) ]]; then
@@ -65,6 +75,7 @@ command=${1:-}
 case $command in
     build-zephyr ) build_zephyr ;;
     server ) server ;;
+    web ) web ;;
     -h) help ;;
     --help) help ;;
     *) error_command ;;
