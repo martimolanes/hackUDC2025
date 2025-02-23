@@ -12,7 +12,7 @@ async def handle_connection(websocket):
         print(f"Client disconnected: {websocket.remote_address}")
 
 async def main():
-    async with websockets.serve(handle_connection, "localhost", 8765):
+    async with websockets.serve(handle_connection, "0.0.0.0", 8765):
         print("WebSocket server started at ws://localhost:8765")
         await asyncio.Future()  # Run forever
 
