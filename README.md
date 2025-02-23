@@ -1,6 +1,6 @@
 <div align="center">
 
-# Anov (An Open Vibrator)
+# AnOV (An Open Vibrator)
 
 A **three-day** project to take a serious approach to a **privacy-first** buttplug full project using [Zephyr RTOS](https://github.com/zephyrproject-rtos/zephyr).
 
