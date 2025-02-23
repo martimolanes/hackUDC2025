@@ -33,11 +33,11 @@ If you care about your phone's privacy, you should care about your intimate priv
 └── x
 ```
 
-- **AnOV**: The main project folder, this is the firmware for the Xiao Nrf52840.
+- **AnOV**: The main project folder, this is the firmware for the Xiao Nrf52840. It uses the Zephyr RTOS to serve a BLE service that activates a PWM signal, to action the motor.
 
 - **buttplug-playground**: A web-frontend that utilizes the OSS [buttplug protocol specification](https://buttplug-spec.docs.buttplug.io/docs/spec).
 
-- **intiface-engine**: The backend of the buttplug.io stack, it has a way of define the **Device protocol** that we use in our DIY vibrator
+- **intiface-engine**: The backend of the buttplug.io stack, it has a way of define the **Device protocol**, this, is the way that we communicate with our DIY vibrator, we utilize the protocol T-code (Toy Code), as is simple and powerful.
 
 - **models**: The .stl 3D models of the vibrator. 
 
@@ -50,6 +50,8 @@ If you care about your phone's privacy, you should care about your intimate priv
 ## How to build this amazing project
 
 ### Hardware
+
+![xiao-nrf52840](./assets/xiao.jpg)
 
 ### Software
 
